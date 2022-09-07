@@ -1,20 +1,20 @@
 [
     {
         "email": "teste@yahoo.com",
-        "fullName": "Testador Silva",
-        "userName": "testador",
+        "fullName": "Daenerys Targaryen",
+        "userName": "dany",
         "password": "12345678"
     },
     {
         "email": "teste1@yahoo.com",
-        "fullName": "Testador Rocha",
-        "userName": "testador1",
+        "fullName": "Viserys Targaryen",
+        "userName": "goldenhead",
         "password": "12345678"
     },
     {
         "email": "teste2@yahoo.com",
-        "fullName": "Testador Hamade",
-        "userName": "testador2",
+        "fullName": "Tyrion Lannister",
+        "userName": "hobgoblin",
         "password": "12345678"
     }
 ]

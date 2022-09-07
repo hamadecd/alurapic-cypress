@@ -91,17 +91,31 @@ describe('Testa funcionalidades de cadastro do Alurapic', () => {
     })
 
     // a mensagem 'Maximun length is 18' já aparece mesmo se digitar apenas 15 caracteres
-    // esse teste vai falhar, pois o tamanho máximo na verdade é 14
     it('verifica mensagem de campo password com 15 caracteres', () => {
         cy.register();
         cy.get('input[formcontrolname="password"]').type('123456789123456').blur();
-        cy.contains('ap-vmessage', 'Maximun length is 18').should('not.be.visible');
+        cy.contains('ap-vmessage', 'Maximun length is 18').should('be.visible');
     })
 
+    const users = require('../../fixtures/usuarios.json');
+
+    users.forEach(user => {
+        it(`Registra novo usuário ${user.fullName}`, () => {
+            cy.contains('a', 'Register now').click();
+            cy.contains('button', 'Register').click();
+            cy.get('input[formcontrolname="email"]').type(user.email);
+            cy.get('input[formcontrolname="fullName"]').type(user.fullName);
+            cy.get('input[formcontrolname="userName"]').type(user.userName);
+            cy.get('input[formcontrolname="password"]').type(user.password);
+            cy.contains('button', 'Register').click();
+        })
+    });
+
+    // need to verify why the click its not working
     it('Registra novo usuário válido', () => {
-        cy.registra('jujuba@yahoo.com', 'Jujuba Balinha', 'juju21', '12345678');
+        cy.registra('jujuba@yahoo.com', 'Jujuba Balinha', 'juju2022', '12345678');
         cy.contains('button', 'Register').click();
-        //cy.get('button').trigger('click');
+        cy.get('button').trigger('click');
         cy.get("button").click({ force: true });
         cy.contains('h4', 'Login').should('be.visible');
     })

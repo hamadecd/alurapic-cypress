@@ -1,22 +1,27 @@
-describe('Testa usabilidade do Alurapic', () => {
+describe('Usability testing of the Alurapic website', () => {
 
     beforeEach(() => {
-        cy.visit('https://alura-fotos.herokuapp.com');
+        cy.visit('/');
     })
 
-    const usuarios = require('../../fixtures/usuarios.json');
+    it('Login is displayed', () => {
+        cy.contains('h4', 'Login').should('be.visible');
+    })
 
-    usuarios.forEach(usuario => {
-        it(`Registra novo usuário ${usuario.fullName}`, () => {
-            cy.contains('a', 'Register now').click();
-            cy.contains('button', 'Register').click();
-            cy.get('input[formcontrolname="email"]').type(usuario.email);
-            cy.get('input[formcontrolname="fullName"]').type(usuario.fullName);
-            cy.get('input[formcontrolname="userName"]').type(usuario.userName);
-            cy.get('input[formcontrolname="password"]').type(usuario.password);
-            cy.contains('button', 'Register').click();
-        })
-    });
+    it('Image of index page', () => {
+        cy.get('img[alt="Welcome"]').should('be.visible');
+    })
 
+    it('Link for login', () => {
+        cy.contains('a', 'Please, login!').should('be.visible');
+    })
+
+    it('Link for register', () => {
+        cy.contains('a', 'Register now').should('be.visible');
+    })
+
+    it('Validate title', () => {
+        cy.title().should('equal', 'Sign in');
+    })
 
 })

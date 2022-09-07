@@ -3,16 +3,16 @@ describe('Testa funcionalidade de login do Alurapic', () => {
     beforeEach(() => {
         cy.visit('/');
 
-        cy.intercept('POST', 'https://apialurapic.herokuapp.com/user/login', {
+        /* cy.intercept('POST', 'https://apialurapic.herokuapp.com/user/login', {
             statusCode: 400
-        }).as('stubPost')
+        }).as('stubPost') */
     })
 
-    it.only('verifica login valido', () => {
+    it('verifica login valido', () => {
         cy.login(Cypress.env('userName'), Cypress.env('password'));
-        cy.wait('@stubPost');
-        cy.wait('@stubPost').should('have.property', 'error');
-        //cy.contains('a', '(Logout)').should('be.visible');
+        //cy.wait('@stubPost');
+        //cy.wait('@stubPost').should('have.property', 'error');
+        cy.contains('a', '(Logout)').should('be.visible');
     })
 
     it('verifica login invalido com senha errada', () => {
