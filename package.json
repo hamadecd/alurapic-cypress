@@ -1,0 +1,17 @@
+{
+  "name": "primeiro-projeto",
+  "version": "1.0.0",
+  "description": "Primeiro Projeto com Cypress",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx cypress open"
+  },
+  "author": "Samir Hamade Rocha",
+  "license": "ISC",
+  "dependencies": {
+    "cypress": "^10.6.0"
+  },
+  "devDependencies": {
+    "mochawesome": "^7.1.3"
+  }
+}
